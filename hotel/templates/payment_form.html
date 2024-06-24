@@ -1,0 +1,27 @@
+{% extends 'hotel/base.html' %}
+{% block title %}Payment{% endblock %}
+{% block content %}
+<h1>Payment</h1>
+<form action="{% url 'payment' booking.id %}" method="post" id="payment-form">
+    {% csrf_token %}
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="{{ stripe_public_key }}"
+        data-amount="{{ booking.room.price|floatformat:0|floatformat:"0" }}00"
+        data-name="Hotel Booking"
+        data-description="Booking for {{ booking.room.name }}"
+        data-locale="auto"></script>
+</form>
+<form action="{% url 'payment' booking.id %}" method="post" id="payment-form">
+    {% csrf_token %}
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="{{ stripe_public_key }}"
+        data-amount="{{ booking.room.price|floatformat:0|floatformat:"0" }}00"
+        data-name="Hotel Booking"
+        data-description="Booking for {{ booking.room.name }}"
+        data-locale="auto"></script>
+</form>
+
+{% if error %}
+    <p style="color: red;">{{ error }}</p>
+{% endif %}
+{% endblock %}

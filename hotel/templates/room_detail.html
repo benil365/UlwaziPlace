@@ -1,0 +1,8 @@
+{% extends 'hotel/base.html' %}
+{% block title %}Room Detail{% endblock %}
+{% block content %}
+<h1>{{ room.name }}</h1>
+<p>{{ room.description }}</p>
+<p>Price: ${{ room.price }}</p>
+<a href="{% url 'book_room' room.id %}">Book this room</a>
+{% endblock %}

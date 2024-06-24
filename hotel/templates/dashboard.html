@@ -1,0 +1,10 @@
+{% extends 'hotel/base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h1>Dashboard</h1>
+<ul>
+    {% for booking in bookings %}
+        <li>{{ booking.room.name }} from {{ booking.start_date }} to {{ booking.end_date }} - {% if booking.checked_in %}Checked In{% else %}Not Checked In{% endif %}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
